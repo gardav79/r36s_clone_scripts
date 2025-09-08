@@ -510,7 +510,7 @@ main() {
     run_command "Voltaje actual de la batería" "cat /sys/class/power_supply/battery/voltage_now || echo 'Voltaje actual no disponible'"
 
     # Información del cargador (si aplica)
-    run_command "Corriente máxima de carga (en mAh)" "cat /sys/class/power_supply/current_max || echo 'Corriente no disponible'"
+    run_command "Corriente máxima de carga (en mAh)" "cat /sys/class/power_supply/ac/current_max || echo 'Corriente no disponible'"
     run_command "Cargador detectado (1=si, 0=no)" "cat /sys/class/power_supply/ac/online || echo 'Detección cargador no disponible'"
     run_command "Estado del cargador (Charging/Discharging)" "cat /sys/class/power_supply/ac/status || echo 'Estado no disponible'"
     run_command "Voltaje máximo de carga" "cat /sys/class/power_supply/ac/voltage_max || echo 'Voltaje máximo no disponible'"
