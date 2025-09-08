@@ -7,6 +7,8 @@ El script debe guardarse en la carpeta ports, donde se ponen los juegos de PortM
 
 Esto es un ejemplo del archivo diagnostico.log:
 
+<pre>
+
 ================================================================
 DIAGNÓSTICO DEL SISTEMA - jue jul 17 21:10:35 CEST 2025
 ============Diagnóstico completado. La información se ha guardado en: /roms/ports/diagnostico.log
@@ -1305,4 +1307,4 @@ SUDO_USER=ark
 ================================================================
 DIAGNÓSTICO COMPLETADO - jue jul 17 21:10:53 CEST 2025
 ================================================================
-
+</pre>
