@@ -5,6 +5,27 @@ El primer script, diagnóstico.sh, permite obtener información relevante para p
 
 El script debe guardarse en la carpeta ports, donde se ponen los juegos de PortMaster y lanzarlo desde emulationstation como un port más de PortMaster. Está configurado para que guarde un archivo llamado diagnostico.log en esta ruta (en mi caso, /ports de la partición EASYROMS). Ese archivo diagnostico.log es el que contendrá toda la información relevante sobre la consola para poder determinar que el causante del problema. 
 
+USO:
+
+1-. Introducir la SD de la consola en el PC
+2-. Copiar el script a la carepta ports de la partición EASYROMS
+3-. Copiar el script a
+4-. Desmontar la SD, retirarla del PC e introducirla en la consola. Encender la consola
+5-. Cuando la consola arranque, en emulationstation ir a ports:
+
+<img width="1250" height="920" alt="imagen" src="https://github.com/user-attachments/assets/33676210-2d1a-4885-b16f-e955122eb5ab" />
+
+6-. Entrar en ports, y dentro estará el script:
+<img width="1170" height="920" alt="imagen" src="https://github.com/user-attachments/assets/f2ec9e02-ff3c-446f-834b-f8fb6a7fc3a7" />
+
+7-. Ejecutar el script. Al ejecutarlo mostrará en la pantalla que está recopilando la información necesaria:
+<img width="1233" height="920" alt="imagen" src="https://github.com/user-attachments/assets/810443d4-5542-46f6-9f3a-3c418f09f564" />
+
+8-. Cuando el script termine, volverá a emulationstation.
+9-. Apagar la consola y retirar la SD. Introducirla en el PC de nuevo
+10-. En la ruta donde hemos guardado el script, en la carpeta ports de la partición EASYROMS, habrá un nuevo archivo llamado diagnostico.log
+
+
 Esto es un ejemplo del archivo diagnostico.log:
 
 <pre>
