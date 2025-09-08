@@ -27,7 +27,7 @@ USO:
 
 7-. Cuando el script termine, volverá a emulationstation.
 
-8. Apagar la consola y retirar la SD. Introducirla en el PC de nuevo
+8-. Apagar la consola y retirar la SD. Introducirla en el PC de nuevo
 
 9-. En la ruta donde hemos guardado el script, en la carpeta ports de la partición EASYROMS, habrá un nuevo archivo llamado diagnostico.log
 
