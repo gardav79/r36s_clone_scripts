@@ -3,7 +3,7 @@ Repositorio con scripts para diagnósico de problemas comunes y solución (de mo
 
 El primer script, diagnóstico.sh, permite obtener información relevante para poder determinar problemas de la consola R36s "clónica" (de momento está sin probar en "originales") para poder determinar diferentes problemas que se suelen dar con estas consolas. Problemas como que el joystick esté cambiado, no tenga sonido, retroarch no permita guardar partidas... Es mucho más sencillo determinar la causa si se tiene información del sistema. 
 
-El script debe guardarse en la carpeta ports, donde se ponen los juegos de PortMaster y lanzarlo desde emulationstation como un port más de PortMaster. Está configurado para que guarde un archivo llamado diagnostico.log en esta ruta (en mi caso, /ports de la partición EASYROMS). Ese archivo diagnostico.log es el que contendrá toda la información relevante sobre la consola para poder determinar que el causante del problema. 
+El script debe guardarse en la carpeta tools, lanzarlo desde las opciones de emulationstation. Está configurado para que guarde un archivo llamado diagnostico.log en esta ruta (en mi caso, /roms/tools de la partición EASYROMS). Ese archivo diagnostico.log es el que contendrá toda la información relevante sobre la consola para poder determinar que el causante del problema. 
 
 USO:
 
@@ -13,23 +13,20 @@ USO:
 
 3-. Desmontar la SD, retirarla del PC e introducirla en la consola. Encender la consola
 
-4-. Cuando la consola arranque, en emulationstation ir a ports:
+4-. Cuando la consola arranque, en emulationstation ir a opciones y lanzar el script diagnostico:
 
-<img width="1250" height="920" alt="imagen" src="https://github.com/user-attachments/assets/33676210-2d1a-4885-b16f-e955122eb5ab" />
+<img width="1280" height="958" alt="imagen" src="https://github.com/user-attachments/assets/d82f330d-2f5d-45ac-a165-cf5ad619dc0b" />
 
-5-. Entrar en ports, y dentro estará el script:
+5-. Al ejecutar el script mostrará en la pantalla que está recopilando la información necesaria (no he conseguido hacer una foto en condiciones de esto):
 
-<img width="1170" height="920" alt="imagen" src="https://github.com/user-attachments/assets/f2ec9e02-ff3c-446f-834b-f8fb6a7fc3a7" />
+<img width="1280" height="962" alt="imagen" src="https://github.com/user-attachments/assets/c490e75f-fab7-4806-a077-16a3b12c6ccf" />
 
-6-. Ejecutar el script. Al ejecutarlo mostrará en la pantalla que está recopilando la información necesaria:
 
-<img width="1233" height="920" alt="imagen" src="https://github.com/user-attachments/assets/810443d4-5542-46f6-9f3a-3c418f09f564" />
+6-. Cuando el script termine, volverá a emulationstation.
 
-7-. Cuando el script termine, volverá a emulationstation.
+7-. Apagar la consola y retirar la SD. Introducirla en el PC de nuevo
 
-8-. Apagar la consola y retirar la SD. Introducirla en el PC de nuevo
-
-9-. En la ruta donde hemos guardado el script, en la carpeta ports de la partición EASYROMS, habrá un nuevo archivo llamado diagnostico.log
+8-. En la ruta donde hemos guardado el script, en la carpeta tools de la partición EASYROMS, habrá un nuevo archivo llamado diagnostico.log
 
 
 Esto es un ejemplo del archivo diagnostico.log:
