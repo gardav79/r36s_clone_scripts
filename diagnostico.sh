@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# diagnostico.sh - Script de diagnóstico para ArkOS
+# diagnostico.sh - Script de diagnóstico para ArkOS v1.1
 #
 # Copyright (c) 2024 gardav79
 #
@@ -11,30 +11,92 @@
 # - Debe mantenerse este aviso de copyright
 # - Debe incluirse un enlace a la licencia MIT
 # - Debe mencionarse al autor original
+# 
+# REGISTRO DE CAMBIOS
+#
+# Cambiado para que funcione desde el directorio tools
+# Muestra de información en pantalla, con espera para lectura
+# Modificada la función para que se asegure que escribe el log en tools
+#
+# Agradecimientos
+# A @Xcorpion82 por la sugerencia de cambio a tools
 
 
-PORTS_DIR=$(find / -name "ports" -type d 2>/dev/null | grep -E "^(/.*/ports)$" | head -1)
 
-# Si no encontramos ports en la raíz, buscamos en otras ubicaciones comunes
-if [ -z "$PORTS_DIR" ]; then
-    echo "Buscando en ubicaciones comunes..."
-    common_locations=(
-        "/roms/ports"
-        "/storage/roms/ports" 
-        "/mnt/*/ports"
-        "/opt/ports"
-    )
+TARGET_DIR=""
+
+# Escribir en la pantalla
+write_to_fb() {
+    local message="$1"
+
+    # Si no se pasa mensaje, leer de stdin
+    if [ -z "$message" ]; then
+        while IFS= read -r line; do
+            echo "$line" > /dev/tty0 2>/dev/null || \
+            echo "$line" > /dev/console 2>/dev/null || \
+            echo "$line"
+        done
+    else
+        # Usar el mensaje como parámetro
+        echo "$message" > /dev/tty0 2>/dev/null || \
+        echo "$message" > /dev/console 2>/dev/null || \
+        echo "$message"
+    fi
+}
+
+# Buscar directorio tools
+find_tools() {
+    local log_file="$1"
+    local tools_dirs=("/roms/tools" "/storage/roms/tools")
+    #local target_dir=""
     
-    for location in "${common_locations[@]}"; do
-        if [ -d "$location" ]; then
-            PORTS_DIR="$location"
+    write_to_fb "Buscando directorio tools..."
+    
+    # Buscar directorio tools existente
+    for dir in "${tools_dirs[@]}"; do
+        if [ -d "$dir" ]; then
+            TARGET_DIR="$dir"
+            write_to_fb ""
+            write_to_fb " Directorio tools encontrado: $TARGET_DIR"
             break
         fi
     done
-fi
+    
+    # Verificar que tenemos un directorio target
+    if [ -z "$TARGET_DIR" ]; then
+        write_to_fb ""
+        write_to_fb "❌ No se pudo encontrar o crear directorio tools"
+        return 1
+    fi
+    
+}
 
-# Crear el archivo log
-LOG_FILE="$PORTS_DIR/diagnostico.log"
+# Copiar el log a la carpeta tools si no está allí
+copy_log_to_tools(){    
+    # Verificar que el archivo log existe
+    if [ ! -f "$TARGET_DIR/$LOG_FILE" ]; then
+        echo "Archivo log no encontrado: $LOG_FILE"
+        return 1
+    fi
+    
+    # Copiar el archivo
+    local target_file="$TARGET_DIR/$(basename "$LOG_FILE")"
+    
+    if cp "$LOG_FILE" "$TARGET_FILE" 2>/dev/null; then
+        echo "Log copiado a: $TARGET_FILE"
+        echo "Tamaño: $(du -h "$TARGET_FILE" | cut -f1)"
+        return 0
+    else
+        echo "Error al copiar el log a $TARGET_DIR"
+        return 1
+    fi
+}
+
+# Buscamos carpeta tools
+find_tools
+
+NOMBRE_ARCHIVO="diagnostico.log"
+LOG_FILE="$TARGET_DIR/$NOMBRE_ARCHIVO"
 
 # Función para registrar mensajes en el log
 log_message() {
@@ -384,6 +446,7 @@ run_command() {
     log_message ""
 }
 
+# Función para llamar funciones
 run_command_functions() {
     local section="$1"
     local command="$2"
@@ -430,6 +493,7 @@ check_write_permissions() {
 
 # Función principal
 main() {
+    
     # Verificar permisos de escritura
     echo "Verificando permisos de escritura en: $(pwd)"
     check_write_permissions
@@ -546,26 +610,13 @@ main() {
     echo "Tamaño del archivo: $(du -h "$LOG_FILE" | cut -f1)"
 }
 
-# Ejecutar función principal
-
-
-#main
-
 # Forzar modo consola básico
 export TERM=dumb
-
-# Escribir directamente al framebuffer si es posible
-write_to_fb() {
-    local message="$1"
-    # Intentar métodos alternativos
-    echo "$message" > /dev/tty0 2>/dev/null || \
-    echo "$message" > /dev/console 2>/dev/null || \
-    echo "$message"  # Último recurso
-}
 
 # Limpiar pantalla
 clear > /dev/tty0 2>/dev/null || clear
 
+# Primer mensaje tras encontrar tools
 write_to_fb "========================================"
 write_to_fb "   DIAGNÓSTICO EN EJECUCIÓN"
 write_to_fb "   Guardando log en: $LOG_FILE"
@@ -577,14 +628,25 @@ write_to_fb "========================================"
 main
 } > "$LOG_FILE"
 
-# Feedback final
+# Mensaje final
 write_to_fb ""
 write_to_fb " DIAGNÓSTICO COMPLETADO"
 write_to_fb " Log guardado en: $LOG_FILE"
 write_to_fb ""
-write_to_fb "Pulse cualquier tecla para volver a EmulationStation..."
+
+write_to_fb ""
+write_to_fb "Primeras líneas del log:"
+write_to_fb ""
+tail -n 15 $LOG_FILE | write_to_fb
+
+# Esperamos para que de tiempo a leero
+sleep 10 
+
+# Confirmamos que el log está en tools
+copy_log_to_tools
 
 # Esperar entrada
 read -n 1 -s > /dev/tty0 2>/dev/null || read -n 1 -s
 
+# Agurcito
 exit 0
