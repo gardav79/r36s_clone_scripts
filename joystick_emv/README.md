@@ -1,6 +1,7 @@
 Debe colocarse junto con es_input.cfg en la carpeta tools de easyroms
 
 Instrucciones
+
 Este script está pensado para solucionar el problema del joystick invertido
 en emulationstation consolas r36s en principio "clónicas" aunque funcionaría en "originales"
 también sin problema. 
@@ -12,7 +13,8 @@ El script tiene dos funciones:
 -. Si encuentra archivo es_input.cfg, realiza una copia de seguridad del archivo
    es_input.cfg de la consola, y copia el es_input.cfg que ha encontrado en su lugar
 
-Instalación 
+Instalación
+
 Para hacer funcionar el script, hay que copiarlo a la carpeta tools de la partición EASYROMS
 de la tarjeta SD. Si se tiene archivo es_input.cfg ya modificado, se deja en la misma 
 carpeta tools junto con el script.
