@@ -1,6 +1,3 @@
-# r36s_clone_scripts
-Repositorio con scripts para diagnósico de problemas comunes y solución (de momento solo diagnóstico)
-
 El primer script, diagnóstico.sh, permite obtener información relevante para poder determinar problemas de la consola R36s "clónica" (de momento está sin probar en "originales") para poder determinar diferentes problemas que se suelen dar con estas consolas. Problemas como que el joystick esté cambiado, no tenga sonido, retroarch no permita guardar partidas... Es mucho más sencillo determinar la causa si se tiene información del sistema. 
 
 El script debe guardarse en la carpeta tools, lanzarlo desde las opciones de emulationstation. Está configurado para que guarde un archivo llamado diagnostico.log en esta ruta (en mi caso, /roms/tools de la partición EASYROMS). Ese archivo diagnostico.log es el que contendrá toda la información relevante sobre la consola para poder determinar que el causante del problema. 
