@@ -31,7 +31,6 @@
 # memoria RAM, memorias emmc y SD, etc... Además de permisos de la carpeta roms, y archivos de salvado y estado
 # que pueda haber, dado la cantidad de usuarios que he visto preguntar porque no podían guardar partidas
 
-
 TARGET_DIR=""
 
 # Escribir en la pantalla
