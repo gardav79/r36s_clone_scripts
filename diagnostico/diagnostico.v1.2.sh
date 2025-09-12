@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# diagnostico.sh - Script de diagnóstico para ArkOS v1.1
+# diagnostico.sh - Script de diagnóstico para ArkOS v1.2
 #
 # Copyright (c) 2024 gardav79
+# https://github.com/gardav79/r36s_clone_scripts
 #
 # Permiso concedido bajo la licencia MIT:
 # https://opensource.org/licenses/MIT
@@ -20,7 +21,15 @@
 #
 # Agradecimientos
 # A @Xcorpion82 por la sugerencia de cambio a tools
-
+#
+#
+# Este script se encargar de obtener información relevante sobre la consola r36s
+# que ayudará a poder determinar ciertos problemas que se presentan a usuarios
+# de estas consolas. 
+# 
+# La información que se obtiene está orientada al hardware de la misma (pantalla, sonido, joystick,
+# memoria RAM, memorias emmc y SD, etc... Además de permisos de la carpeta roms, y archivos de salvado y estado
+# que pueda haber, dado la cantidad de usuarios que he visto preguntar porque no podían guardar partidas
 
 
 TARGET_DIR=""
@@ -113,7 +122,7 @@ list_parent_subdirs_with_saves() {
         local total_state=0
         local total_dirs=0
         
-        for dir in $PORTS_DIR/../*/; do
+        for dir in $TARGET_DIR/../*/; do
             if [ -d "$dir" ]; then
                 ((total_dirs++))
                 base_dir=$(basename "$dir")
@@ -519,7 +528,7 @@ main() {
     # Joystick
     run_command "Nombre del joystick" "cat /sys/class/input/event0/device/name || echo 'nombre del joystick no disponible'"
     run_command "Configuración del joystick en emulationstation" "cat /etc/emulationstation/es_input.cfg || echo 'configuración no disponible'"
-    run_command "Configuración del joystick en PortMaster" "cat $PORTS_DIR/../tools/PortMaster/gamecontrollerdb.txt | grep -i $(cat /sys/class/input/event0/device/name) || echo 'Información del joystick en Portmaster no disponible'"
+    run_command "Configuración del joystick en PortMaster" "cat $TARGET_DIR/PortMaster/gamecontrollerdb.txt | grep -i $(cat /sys/class/input/event0/device/name) || echo 'Información del joystick en Portmaster no disponible'"
 
     # Dispositivos de audio
     run_command_functions "Tarjeta de sonido" "get_audio_info"
@@ -531,7 +540,7 @@ main() {
     run_command "Dispositivos de bloque" "lsblk"
 
     # Estado partición ROMS
-    run_command "Permisos de la partición" "ls -la $PORTS_DIR/../"
+    run_command "Permisos de la partición" "ls -la $TARGET_DIR/../"
     run_command_functions "Permisos de salvados retroarch" "list_parent_subdirs_with_saves"
 
     # Configuración gamedb portmaster  
