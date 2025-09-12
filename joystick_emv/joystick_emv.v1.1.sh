@@ -60,9 +60,6 @@
 # restaurada la copia de seguridad (no la borra)
 #
 
-
-# Buscar directorio tools automáticamente (donde se ejecuta este script)
-#SOURCE_DIR="$(cd "$(dirname "$0")" && pwd)"
 # Buscar directorio tools
 find_tools() {
     local log_file="$1"
