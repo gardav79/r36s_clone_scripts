@@ -2,7 +2,6 @@ El primer script, diagnóstico.sh, permite obtener información relevante para p
 
 ![diagnostico](https://github.com/user-attachments/assets/3a540d27-61b0-45f8-b30b-f8d7de81206c)
 
-
 El script debe guardarse en la carpeta tools, lanzarlo desde las opciones de emulationstation. Está configurado para que guarde un archivo llamado diagnostico.log en esta ruta (en mi caso, /roms/tools de la partición EASYROMS). Ese archivo diagnostico.log es el que contendrá toda la información relevante sobre la consola para poder determinar que el causante del problema. 
 
 USO:
