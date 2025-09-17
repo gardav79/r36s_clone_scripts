@@ -13,6 +13,27 @@
 # - Debe incluirse un enlace a la licencia MIT
 # - Debe mencionarse al autor original
 # 
+# Se concede permiso por la presente, de forma gratuita, a cualquier persona que obtenga una copia
+# de este software y de los archivos de documentación asociados (el "Software"), para utilizar
+# el Software sin restricción, incluyendo sin limitación los derechos de uso, copia, modificación,
+# fusión, publicación, distribución, sublicencia y/o venta de copias del Software, y para permitir
+# a las personas a las que se les proporcione el Software a hacer lo mismo, sujeto a las siguientes condiciones:
+# 
+# El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias
+# o partes sustanciales del Software.
+# 
+# EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA,
+# INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIALIZACIÓN, IDONEIDAD PARA UN PROPÓSITO PARTICULAR
+# Y NO INFRACCIÓN. EN NINGÚN CASO LOS AUTORES O TITULARES DEL COPYRIGHT SERÁN RESPONSABLES DE NINGÚN
+# RECLAMO, DAÑO U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO MOTIVO,
+# QUE SURJA DE O EN CONEXIÓN CON EL SOFTWARE O EL USO U OTRO TIPO DE ACCIONES EN EL SOFTWARE.
+# 
+# ADVERTENCIA: Este script se ofrece sin garantía de ningún tipo y se proporciona "COMO ESTÁ".
+# El autor declina expresamente toda responsabilidad por cualquier daño, pérdida o problema que pueda
+# surgir del uso de este software. El usuario utiliza este script bajo su propio riesgo y responsabilidad.
+
+
+
 # REGISTRO DE CAMBIOS
 #
 # Cambiado para que funcione desde el directorio tools
