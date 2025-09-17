@@ -81,6 +81,8 @@
 # restaurada la copia de seguridad (no la borra)
 #
 
+SOURCE_DIR=""
+
 # Buscar directorio tools
 find_tools() {
     local log_file="$1"
